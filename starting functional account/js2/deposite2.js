@@ -1,17 +1,14 @@
-function getInputById (inputId){
-    const inputField =  document.getElementById(inputId);
-    const inputFieldStr = inputField.value;
-    const inputFieldValue = parseFloat(inputFieldStr);
-    inputField.value = '';
-    return inputFieldValue; 
-}
-function getElementValueById(elementId){
-    const element = document.getElementById(elementId);
-    const getElementValueByIdStr = element.innerText;
-    const value = parseFloat(getElementValueByIdStr);
-    return value;
-}
-
 document.getElementById('btn-diposite').addEventListener('click', function(){
     const newDepositeAmmount = getInputById('diposite-field');
+
+    const prevDepositeAmmount = getElementValueById('diposite-total')
+    // console.log(prevDepositeAmmount);
+
+    const newDepositeTotal = newDepositeAmmount + prevDepositeAmmount;
+
+    setElementValueById('diposite-total', newDepositeTotal);  
+
+    const prevBalanceTotal = getElementValueById('balance-total');
+    const newBalanceTotal = prevBalanceTotal + newDepositeAmmount;
+    setElementValueById('balance-total', newBalanceTotal);
 })
